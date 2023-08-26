@@ -1,15 +1,15 @@
 .page {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   background: #212121;
 }
 
 .card-container {
-  padding: 0 5rem;
+  margin: 5rem auto;
 }
 
 .help-form-container {
-    margin: 0 5rem;
+    margin: 5rem auto;
     width: 400px;
     background: linear-gradient(#212121, #212121) padding-box,
                 linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
