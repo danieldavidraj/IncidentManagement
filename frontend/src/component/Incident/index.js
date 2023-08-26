@@ -1,25 +1,39 @@
 import './styles.css';
+import {useEffect, useState} from 'react';
+import axios from 'axios';
 
 export default function Incident() {
+  const [incidents, setIncidents] = useState([]);
+    const token = localStorage.getItem('access');
+    useEffect(() => {
+      axios.get('http://localhost:8000/incident/list/', { 
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
+      .then((response) => {
+        setIncidents(response.data.incidents);
+      })
+    }, []);
+
     return (
       <div className='page'>
         <div className='card-container'>
-          <div className="card">
-            <div className="main-content">
-              <div className="header">
-                <span>Article on</span>
-                <span>29-June-2023</span>
+          {incidents && incidents.length && incidents.map((incident) => {
+            return (
+              <div className="card">
+                <div className="main-content">
+                  <div className="header">
+                    <span>Incident:</span>
+                  </div>
+                  <p className="heading">{incident.message}</p>
+                  <div className="categories">
+                    <span>{incident.resolution ? incident.resolution : 'Not categorized'}</span>
+                  </div>
+                </div>
               </div>
-              <p className="heading">Different ways to use CSS in React</p>
-              <div className="categories">
-                <span>React</span>
-                <span>Css</span>
-              </div>
-            </div>
-            <div className="footer">
-              by Harsh Gupta
-            </div>
-          </div>
+            )
+          })}
         </div>
         <div className="help-form-container">
           <form className="help-form">

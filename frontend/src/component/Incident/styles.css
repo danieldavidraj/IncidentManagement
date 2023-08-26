@@ -1,11 +1,16 @@
 .page {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   min-height: 100%;
   background: #212121;
 }
 
 .card-container {
-  margin: 5rem auto;
+  padding: 5rem;
+  display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
 }
 
 .help-form-container {

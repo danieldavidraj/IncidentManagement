@@ -9,11 +9,12 @@ import keras
 from keras.preprocessing.sequence import pad_sequences
 import numpy as np
 
-@api_view(["POST"])
+@api_view(["GET"])
 @permission_classes((IsAuthenticated,))
 def get_incidents_for_user(request, format=None):
     user = request.user
-    incidents = Incident.objects.filter(user=user)
+    incidents = list(Incident.objects.filter(user=user).values())
+
     return Response({'incidents': incidents}, status=200)
 
 

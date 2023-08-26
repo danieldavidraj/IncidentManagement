@@ -19,7 +19,7 @@ function SignUpForm() {
     evt.preventDefault();
 
     const { name, email, password } = state;
-    axios.post('https://incident-backend.onrender.com/user/api/register/', {
+    axios.post('https://incident-backend.onrender.com/user/register/', {
         name,
         email,
         password

@@ -1,7 +1,9 @@
 import React from "react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function SignInForm() {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     email: "",
     password: ""
@@ -19,12 +21,13 @@ function SignInForm() {
 
     const { email, password } = state;
     
-    axios.post('https://incident-backend.onrender.com/user/api/login/', {
+    axios.post('http://localhost:8000/user/login/', {
         email,
         password
     })
     .then((response) => {
-        console.log(response.data);
+        localStorage.setItem('access', response.data.access);
+        navigate('/incidents', { replace: true });
     })
   };
 
