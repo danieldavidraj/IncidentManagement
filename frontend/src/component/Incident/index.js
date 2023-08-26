@@ -33,7 +33,7 @@ export default function Incident() {
   
       const { message } = state;
       
-      axios.post('https://incident-backend.onrender.com/incident/collect/', {
+      axios.post('https://incident-backend.onrender.com/incident/create/', {
           message
       }, {
         headers: {
@@ -67,12 +67,8 @@ export default function Incident() {
         <div className="help-form-container">
           <form className="help-form" onSubmit={handleOnSubmit}>
             <div className="help-form-group">
-              <label for="email">Company Email</label>
-              <input type="text" id="email" name="email" required="" />
-            </div>
-            <div className="help-form-group">
               <label for="textarea">How Can We Help You?</label>
-              <textarea name="textarea" id="textarea" rows="10" cols="50" required="" onChange={handleChange}>          </textarea>
+              <textarea name="message" id="textarea" rows="10" cols="50" required="" value={state.message} onChange={handleChange} />
             </div>
             <button className="help-form-submit-btn" type="submit">Submit</button>
           </form>
